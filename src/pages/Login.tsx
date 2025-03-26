@@ -23,14 +23,9 @@ const handleLogin = async (e: React.FormEvent) => {
 
     sessionStorage.setItem('loggedIn', 'true');
     navigate('/search');
-  } catch (error: unknown) {
-    if (axios.isAxiosError(error)) {
-      console.error('Axios error:', error.message);
-    } else if (error instanceof Error) {
-      console.error('General error:', error.message);
-    } else {
-      console.error('Unknown error occurred');
-    }
+  } catch (err) {
+    const error = err as Error;
+    console.error(error.message);
 
     setError(
       "Login failed. If you're using Incognito or Safari, make sure third-party cookies are enabled. In addition, please make sure you are using a valid test account."
