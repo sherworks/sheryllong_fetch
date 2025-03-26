@@ -10,26 +10,24 @@ function Login() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-const handleLogin = async (e: React.FormEvent) => {
-  e.preventDefault();
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-  try {
-    console.log('Logging in with:', name, email);
-    await axios.post(
-      'https://frontend-take-home-service.fetch.com/auth/login',
-      { name, email },
-      { withCredentials: true }
-    );
+    try {
+        console.log('Logging in with:', name, email);
+      await axios.post(
+        'https://frontend-take-home-service.fetch.com/auth/login',
+        { name, email },
+        { withCredentials: true }
+      );
 
-    sessionStorage.setItem('loggedIn', 'true');
-    navigate('/search');
-  } catch (err: any) {
-    console.error(err?.message || err);
-    setError(
-      "Login failed. If you're using Incognito or Safari, make sure third-party cookies are enabled. In addition, please make sure you are using a valid test account."
-    );
-  }
-};
+      sessionStorage.setItem('loggedIn', 'true');
+      navigate('/search');
+    } catch (err) {
+      console.error(err);
+      setError('Login failed. Please try again.');
+    }
+  };
 
   return (
     <div className="login-page">
