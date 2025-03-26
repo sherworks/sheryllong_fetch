@@ -24,12 +24,14 @@ const handleLogin = async (e: React.FormEvent) => {
     sessionStorage.setItem('loggedIn', 'true');
     navigate('/search');
   } catch (err) {
-    if (err instanceof Error) {
-      console.error(err.message);
+    if (axios.isAxiosError(err)) {
+      console.error(err.response?.data || err.message);
     } else {
-      console.error(err);
+      console.error('Unexpected error:', err);
     }
-    setError("Login failed. If you're using Incognito or Safari, make sure third-party cookies are enabled. In addition, please make sure you are using a valid test account.");
+    setError(
+      "Login failed. If you're using Incognito or Safari, make sure third-party cookies are enabled. In addition, please make sure you are using a valid test account."
+    );
   }
 };
 
