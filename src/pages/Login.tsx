@@ -24,8 +24,8 @@ function Login() {
       sessionStorage.setItem('loggedIn', 'true');
       navigate('/search');
     } catch (err) {
-      console.error(err);
-      setError('Login failed. Please try again.');
+      console.error(errorMessage);
+      setError("Login failed. If you're using Incognito or Safari, make sure third-party cookies are enabled. In addition, please make sure you are using a valid test account.");
     }
   };
 
