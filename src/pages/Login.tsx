@@ -23,10 +23,8 @@ const handleLogin = async (e: React.FormEvent) => {
 
     sessionStorage.setItem('loggedIn', 'true');
     navigate('/search');
-  } catch (err) {
-    const error = err as Error;
-    console.error(error.message);
-
+  } catch (err: any) {
+    console.error(err?.message || err);
     setError(
       "Login failed. If you're using Incognito or Safari, make sure third-party cookies are enabled. In addition, please make sure you are using a valid test account."
     );
