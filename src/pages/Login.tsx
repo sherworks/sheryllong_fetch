@@ -23,8 +23,12 @@ function Login() {
 
       sessionStorage.setItem('loggedIn', 'true');
       navigate('/search');
-    } catch (err) {
-      console.error(errorMessage);
+      } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.error('Login error:', err.message);
+      } else {
+        console.error('Unknown login error:', err);
+      }
       setError("Login failed. If you're using Incognito or Safari, make sure third-party cookies are enabled. In addition, please make sure you are using a valid test account.");
     }
   };
