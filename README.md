@@ -56,3 +56,7 @@ GoFetch! is a front-end web application built with React that allows users to lo
    npm install react-router-dom
    npm install axios
    npm run dev
+
+This application uses the Fetch API service, which requires third-party cookies to authenticate properly.
+
+Please ensure third-party cookies are enabled in your browser (especially in Incognito mode or Safari) for login and dog browsing features to work correctly
