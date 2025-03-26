@@ -24,8 +24,12 @@ function Login() {
       sessionStorage.setItem('loggedIn', 'true');
       navigate('/search');
     } catch (err) {
-      console.error(err);
-      setError('Login failed. Please try again.');
+      console.error('Login error:', err);
+      if (err.response?.status === 401 || err.response?.status === 400) {
+        setError("Invalid name or email. Please use a valid test account.");
+      } else {
+        setError("Login failed. If you're using Incognito or Safari, make sure third-party cookies are enabled.");
+      }
     }
   };
 
